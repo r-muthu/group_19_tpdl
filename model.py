@@ -61,11 +61,15 @@ class ResNetLSTM(nn.Module):
         
         # Load Pretrained ResNet-50 and Remove Fully Connected Layer
         self.resnet = models.resnet50(pretrained=True)
-        self.resnet.fc = nn.Identity()  # Remove FC layer
+        # Modify Global Average Pooling to (4, 8)
+        self.resnet.avgpool = nn.AdaptiveAvgPool2d((4, 8))
+        
+        # Remove Fully Connected Layer
+        self.resnet.fc = nn.Identity()
         
         # LSTM Layer
-        self.lstm = nn.LSTM(input_size=2048, hidden_size=lstm_hidden, num_layers=lstm_layers,
-                            batch_first=True, bidirectional=True)
+        self.lstm = nn.LSTM(input_size=2048, hidden_size=lstm_hidden, 
+                            num_layers=lstm_layers, batch_first=True, bidirectional=True)
         
         # Fully Connected Layer
         self.fc = nn.Linear(lstm_hidden * 2, num_classes)  # *2 for bidirectional
