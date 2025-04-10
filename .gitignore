@@ -3,3 +3,6 @@ pretrained_models/*
 __pycache__/*
 .venv/*
 venv/*
+*.pkl
+__pycache__
+*.ipynb_checkpoints
