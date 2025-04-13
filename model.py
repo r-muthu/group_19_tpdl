@@ -3,9 +3,8 @@ import torchvision.models as models
 
 # Custom ResNet-50 + BiLSTM Model for Spectrogram Classification
 class ResNet50(nn.Module):
-    def __init__(self, num_classes=10, lstm_hidden=128, lstm_layers=2):
+    def __init__(self, classes=10, lstm_hidden=128, lstm_layers=2):
         super(ResNet50, self).__init__()
-        self.num_classes = num_classes
         # Load Pretrained ResNet-50 and Remove Fully Connected Layer
         self.resnet = models.resnet50(pretrained=True)
         
@@ -16,7 +15,7 @@ class ResNet50(nn.Module):
         self.resnet.avgpool = nn.AdaptiveAvgPool2d((4, 8))
 
         # Fully Connected Layer
-        self.resnet.fc = nn.Linear(2048*4*8, num_classes)
+        self.resnet.fc = nn.Linear(2048*4*8, classes)
         
     def forward(self, x):
         x = self.resnet(x)
