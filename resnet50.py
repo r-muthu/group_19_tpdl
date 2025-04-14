@@ -13,9 +13,10 @@ class ResNet50(nn.Module):
         
         # Modify Global Average Pooling to (4, 8)
         self.resnet.avgpool = nn.AdaptiveAvgPool2d((4, 8))
-
+ 
         # Fully Connected Layer
         self.resnet.fc = nn.Linear(2048*4*8, classes)
+        
         
     def forward(self, x):
         x = self.resnet(x)
