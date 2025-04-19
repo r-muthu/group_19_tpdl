@@ -89,7 +89,7 @@ Open `train.ipynb` and run **all cells in sequence**.
 To train a model, run the following:
 
 ```python
-Trainer(model()).train()
+Trainer(model, train_loader, valid_loader, test_loader, num_classes=num_languages).train()
 ```
 
 ### Example
