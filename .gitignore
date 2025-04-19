@@ -4,3 +4,12 @@ __pycache__
 *.ipynb_checkpoints
 pretrained_models/*
 __pycache__/*
+en
+cn
+mp3
+wav
+mel
+data*
+temp*
+checkpoints
+pretrained_models
