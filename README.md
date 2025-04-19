@@ -15,8 +15,7 @@ Our model takes as input fixed length mel spectrograms of a vocal sample. The pr
  5. Generate the mel spectrogram of the segment
 
 
-
-# Getting the Data
+### Getting the Data
 
 There are two options to acquire the spectrogram data used for our model:
 
@@ -25,7 +24,7 @@ There are two options to acquire the spectrogram data used for our model:
 
 ---
 
-## Option 1: Download Audio from Mozilla
+### Option 1: Download Audio from Mozilla
 
 To train the model with original audio data, download the following files from [Mozilla Common Voice](https://commonvoice.mozilla.org/en/datasets):
 
@@ -63,7 +62,7 @@ python3 preprocessing.py
 
 ---
 
-## Option 2: Download Preprocessed Spectrograms
+### Option 2: Download Preprocessed Spectrograms
 
 We provide preprocessed spectrograms here:  
 🔗 [Google Drive - Spectrograms](https://drive.google.com/drive/folders/1kTJOxuvR3wXVKE_1nKetCILjwRyUGGZY)
@@ -78,14 +77,14 @@ Move each file into the appropriate language folder.
 
 ---
 
-# Training the Models
+## Training the Models
 
 Open `train.ipynb` and run **all cells in sequence**.
 
 - Do **not** modify cells that state “(no changes needed)”.
 - The **first required modification** is right after the class definition of the `SequenceDataset`, where `None` should be replaced with the **path to your dataset**.
 
-## Running the Training
+### Running the Training
 
 To train a model, run the following:
 
@@ -117,7 +116,7 @@ This will display the training progress along with visualizations for loss and a
 
 ---
 
-## Loading and Testing the Model
+### Loading and Testing the Model
 
 To load a trained model and evaluate its performance, navigate to the **"Loading and testing a model"** section in `train.ipynb` and follow these steps:
 
@@ -125,7 +124,7 @@ To load a trained model and evaluate its performance, navigate to the **"Loading
 2. Set the `model_dir` to the folder containing the model's weights.
 3. Initialize the model and call the loading/testing function.
 
-### Example
+#### Example
 
 ```python
 model_dir = "checkpoints/ResNet34BiLSTMAttention"
